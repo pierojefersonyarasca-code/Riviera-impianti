@@ -147,3 +147,11 @@ header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
 @media (prefers-reduced-motion: reduce) {
   .menu-icon i { transition: none; }
 }
+
+/* Scroll depth for the hero illustration and its technical grid. */
+.hero { background-position: 0 var(--grid-shift, 0px); }
+.art { transform: translate3d(0, var(--art-shift, 0px), 0); }
+@media (prefers-reduced-motion: reduce) {
+  .hero { background-position: 0 0; }
+  .art { transform: none; }
+}
