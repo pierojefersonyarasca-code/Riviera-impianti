@@ -87,3 +87,25 @@ header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal-link{animation:none}.mobile-glass,.menu span,.reveal-link:after,.reveal-label,.reveal-arrow{transition:none}}
 @media(prefers-reduced-transparency:reduce){header,header nav,.mobile-glass{background:#f7fbff;backdrop-filter:none;-webkit-backdrop-filter:none}.nav-open:before{backdrop-filter:none;-webkit-backdrop-filter:none}}
+
+/* Motion design: title reveal, technical scan, subtle scroll depth */
+.motion-title .title-mask{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.motion-title .title-mask>span{display:block;animation:titleRise .85s var(--ease) both}
+.motion-title .title-mask:nth-child(2)>span{animation-delay:.09s}
+.motion-title .title-mask:nth-child(3)>span{animation-delay:.18s}
+.motion-title .title-mask:nth-child(4)>span{animation-delay:.27s}
+.motion-title .title-mask:nth-child(5)>span{animation-delay:.36s}
+@keyframes titleRise{from{opacity:0;transform:translateY(115%)}to{opacity:1;transform:none}}
+.art{background:none;overflow:hidden;transform:translate3d(0,var(--art-shift,0px),0)}
+.art-layer{position:absolute;inset:0;background:url('impianto-blueprint.jpg') center right/contain no-repeat}
+.art-photo{animation:photoReveal 2s .25s var(--ease) both}
+.art-blueprint{filter:grayscale(1) contrast(1.15);opacity:0;animation:technicalFade 2.25s ease both}
+.art-blueprint:after{content:"";position:absolute;inset:0;background:#5e9cd4;mix-blend-mode:screen;opacity:.22}
+.art-scan{position:absolute;inset:0;width:1px;left:0;background:#386d9d;box-shadow:0 0 16px 3px #73a8e4;opacity:0;animation:scanAcross 2s .25s var(--ease) both;pointer-events:none}
+.art:after{z-index:2;pointer-events:none}
+.hero{background-position:0 var(--grid-shift,0px)}
+@keyframes photoReveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+@keyframes technicalFade{0%,12%{opacity:1}100%{opacity:0}}
+@keyframes scanAcross{0%{left:0;opacity:0}12%{opacity:.65}88%{opacity:.65}100%{left:100%;opacity:0}}
+@media(max-width:760px){.art-layer{background-position:center;background-size:cover}.art{transform:translate3d(0,var(--art-shift,0px),0)}}
+@media(prefers-reduced-motion:reduce){.motion-title .title-mask>span,.art-photo,.art-blueprint,.art-scan{animation:none}.art-blueprint,.art-scan{display:none}.art{transform:none}.hero{background-position:0 0}}
