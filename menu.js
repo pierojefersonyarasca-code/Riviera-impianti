@@ -1,17 +1,19 @@
 'use strict';
 const trigger=document.querySelector('.menu');
+const logo=document.querySelector('.logo');
 const panel=document.getElementById('mobileNav');
 const desktop=matchMedia('(min-width:1101px)');
 function setMenu(open,restoreFocus=false){
   open=Boolean(open)&&!desktop.matches;
   document.body.classList.toggle('nav-open',open);
   trigger.setAttribute('aria-expanded',String(open));
-  trigger.setAttribute('aria-label',open?'Chiudi menu':'Apri menu');
+  trigger.querySelector('.menu-label').textContent=open?'Chiudi':'Menu';
   panel.inert=!open;
   panel.setAttribute('aria-hidden',String(!open));
   if(restoreFocus)trigger.focus();
 }
 trigger.addEventListener('click',()=>setMenu(trigger.getAttribute('aria-expanded')!=='true'));
+logo.addEventListener('click',()=>setMenu(false));
 panel.addEventListener('click',event=>{
   const link=event.target.closest('a');
   if(link){setMenu(false);const target=document.querySelector(link.hash);if(target){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}}

@@ -19,15 +19,10 @@ header nav a:is(:hover,:focus-visible){background:#10325717}
 header>.cta{border-radius:10px;background:#103257eb;white-space:nowrap}
 .outline{background:transparent;border:1px solid var(--ink);color:var(--ink)}
 .menu{display:none;position:relative;flex-direction:column;align-items:center;justify-content:center;gap:6px;flex-shrink:0;width:48px;height:48px;padding:0;border-radius:50%;color:var(--ink);background:linear-gradient(145deg,#fff9,#c1d8ed66);border:1px solid #fff;box-shadow:0 5px 14px #173c6426,inset 0 2px 2px #fff,inset 0 -2px 3px #7395b42e}
-.menu span{width:20px;height:1.6px;background:var(--ink);border-radius:4px;transition:transform .35s var(--ease)}
-.nav-open .menu span:first-child{transform:translateY(3.8px) rotate(45deg)}
-.nav-open .menu span:last-child{transform:translateY(-3.8px) rotate(-45deg)}
-.mobile-glass{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;padding:10px;border:1px solid #ffffffd9;border-radius:26px;background:linear-gradient(150deg,#f7fcffe0,#b6ccebbd);box-shadow:0 18px 45px #102b492b,inset 0 2px 2px #fff,inset 0 -1px 4px #779aba33;backdrop-filter:blur(32px) saturate(185%);-webkit-backdrop-filter:blur(32px) saturate(185%);opacity:0;visibility:hidden;transform:translateY(-9px) scale(.97);transform-origin:top right;clip-path:inset(0 0 100% 0 round 26px);transition:opacity .28s,transform .4s var(--ease),clip-path .4s var(--ease),visibility .4s;max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px);overflow:auto}
+.mobile-glass{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;padding:10px;border:1px solid #ffffffd9;border-radius:26px;background:linear-gradient(150deg,#f7fcffe0,#b6ccebbd);box-shadow:0 18px 45px #102b492b,inset 0 2px 2px #fff,inset 0 -1px 4px #779aba33;backdrop-filter:blur(32px) saturate(185%);-webkit-backdrop-filter:blur(32px) saturate(185%);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s,transform .24s var(--ease),visibility .24s;max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px);overflow:auto}
 .mobile-glass a{display:flex;align-items:center;justify-content:space-between;padding:15px 17px;font-size:16px;letter-spacing:-.02em;border-bottom:1px solid #10325716;border-radius:14px}
 .mobile-glass a:is(:hover,:focus-visible){background:#ffffff85}
-.mobile-glass .mobile-contact{border:0;background:linear-gradient(140deg,#244e7c,#102e50);color:#fff;margin-top:7px;box-shadow:inset 0 1px 1px #ffffff60}
-.nav-open .mobile-glass{opacity:1;visibility:visible;transform:none;clip-path:inset(0 0 0 0 round 26px)}
-.nav-open:before{content:"";position:fixed;inset:0;z-index:40;background:#102b4914;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);pointer-events:none}
+.nav-open .mobile-glass{opacity:1;visibility:visible;transform:none}
 /* Hero and blueprint */
 .hero{position:relative;isolation:isolate;min-height:610px;display:flex;align-items:center;margin-top:-92px;padding:calc(5% + 92px) 4% 5%;overflow:hidden;background-image:linear-gradient(#b8ccdf35 1px,transparent 1px),linear-gradient(90deg,#b8ccdf35 1px,transparent 1px);background-size:32px 32px}
 .art{position:absolute;inset:0 0 0 29%;z-index:-1;background:url('impianto-blueprint.jpg') center right/contain no-repeat}
@@ -35,25 +30,22 @@ header>.cta{border-radius:10px;background:#103257eb;white-space:nowrap}
 .intro{width:36%;max-width:550px;min-width:0}
 .eyebrow{font-size:11px;letter-spacing:.2em;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:12px}
 .eyebrow:before{content:"";width:35px;height:1px;background:var(--ink);flex-shrink:0}
-.hero h1,.section h2{font-family:Inter,"Arial Black",Arial,sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-.075em;line-height:.96;overflow-wrap:anywhere}
+.hero h1,.section h2{font-family:Inter,"Arial Black",Arial,sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-.05em;line-height:1;overflow-wrap:break-word}
 .hero h1{font-size:clamp(32px,3.75vw,66px);margin:24px 0}
 .hero h1 strong{font-weight:900}
 .intro p{max-width:36ch;font-size:17px;line-height:1.5;margin:0 0 30px}
 /* Animated editorial links */
 .reveal-actions{display:flex;flex-direction:column;align-items:flex-start;gap:9px;max-width:330px;width:100%}
-.reveal-link{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;min-height:51px;padding:5px 0;color:var(--ink);font-size:14px;font-weight:600;letter-spacing:-.035em;isolation:isolate;overflow:hidden;animation:ctaEnter .65s var(--ease) both}
-.reveal-link:nth-child(2){animation-delay:.12s}
+.reveal-link{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;min-height:51px;padding:5px 0;color:var(--ink);font-size:14px;font-weight:600;letter-spacing:-.035em;isolation:isolate;overflow:hidden;}
 .reveal-link:before,.reveal-link:after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%}
 .reveal-link:before{background:#10325735;z-index:-1}
 .reveal-link:after{background:var(--ink);transform:scaleX(.15);transform-origin:left;transition:transform .45s var(--ease)}
 .reveal-label{transition:transform .35s}
 .reveal-arrow{width:38px;height:38px;display:grid;place-items:center;flex-shrink:0;border-radius:50%;background:var(--ink);color:#fff;transition:transform .4s var(--ease),background .35s,color .35s}
-.secondary-link .reveal-arrow{background:transparent;color:var(--ink);border:1px solid #10325730}
 .reveal-link:is(:hover,:focus-visible,:active):after{transform:scaleX(1)}
 .reveal-link:is(:hover,:focus-visible,:active) .reveal-arrow{transform:rotate(-35deg);background:var(--ink);color:#fff}
 .reveal-link:is(:hover,:focus-visible,:active) .reveal-label{transform:translateX(5px)}
 .reveal-link:active .reveal-arrow{transform:scale(.87) rotate(-35deg)}
-@keyframes ctaEnter{from{opacity:0;transform:translateY(12px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0)}}
 /* Content sections */
 .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line);padding:24px 4%;gap:14px}
 .strip a{display:flex;align-items:center;gap:15px;font-weight:700;font-size:14px}
@@ -69,7 +61,6 @@ header>.cta{border-radius:10px;background:#103257eb;white-space:nowrap}
 footer{padding:25px 4%;font-size:12px}
 /* Responsive layout */
 @media(max-width:1100px){header nav,header>.cta{display:none}.menu{display:flex}.mobile-glass{display:block}}
-@media(min-width:1101px){.nav-open:before{display:none}}
 @media(max-width:760px){
 header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
 .hero{flex-direction:column;align-items:flex-start;margin-top:-82px;padding:112px 6% 0;min-height:0}
@@ -88,65 +79,71 @@ header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal-link{animation:none}.mobile-glass,.menu span,.reveal-link:after,.reveal-label,.reveal-arrow{transition:none}}
 @media(prefers-reduced-transparency:reduce){header,header nav,.mobile-glass{background:#f7fbff;backdrop-filter:none;-webkit-backdrop-filter:none}.nav-open:before{backdrop-filter:none;-webkit-backdrop-filter:none}}
 
-/* Motion design: title reveal, technical scan, subtle scroll depth */
-.motion-title .title-mask{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
-.motion-title .title-mask>span{display:block;animation:titleRise .85s var(--ease) both}
-.motion-title .title-mask:nth-child(2)>span{animation-delay:.09s}
-.motion-title .title-mask:nth-child(3)>span{animation-delay:.18s}
-.motion-title .title-mask:nth-child(4)>span{animation-delay:.27s}
-.motion-title .title-mask:nth-child(5)>span{animation-delay:.36s}
-@keyframes titleRise{from{opacity:0;transform:translateY(115%)}to{opacity:1;transform:none}}
-.art{background:none;overflow:hidden;transform:translate3d(0,var(--art-shift,0px),0)}
-.art-layer{position:absolute;inset:0;background:url('impianto-blueprint.jpg') center right/contain no-repeat}
-.art-photo{animation:photoReveal 2s .25s var(--ease) both}
-.art-blueprint{filter:grayscale(1) contrast(1.15);opacity:0;animation:technicalFade 2.25s ease both}
-.art-blueprint:after{content:"";position:absolute;inset:0;background:#5e9cd4;mix-blend-mode:screen;opacity:.22}
-.art-scan{position:absolute;inset:0;width:1px;left:0;background:#386d9d;box-shadow:0 0 16px 3px #73a8e4;opacity:0;animation:scanAcross 2s .25s var(--ease) both;pointer-events:none}
-.art:after{z-index:2;pointer-events:none}
-.hero{background-position:0 var(--grid-shift,0px)}
-@keyframes photoReveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
-@keyframes technicalFade{0%,12%{opacity:1}100%{opacity:0}}
-@keyframes scanAcross{0%{left:0;opacity:0}12%{opacity:.65}88%{opacity:.65}100%{left:100%;opacity:0}}
-@media(max-width:760px){.art-layer{background-position:center;background-size:cover}.art{transform:translate3d(0,var(--art-shift,0px),0)}}
-@media(prefers-reduced-motion:reduce){.motion-title .title-mask>span,.art-photo,.art-blueprint,.art-scan{animation:none}.art-blueprint,.art-scan{display:none}.art{transform:none}.hero{background-position:0 0}}
-
-/* Mobile cinematic entrance: image first, then interface and copy */
-@media(max-width:760px) and (prefers-reduced-motion:no-preference){
- header{animation:mobileHeaderIn .65s .72s var(--ease) both}
- .hero .art{clip-path:inset(0);animation:mobileImageFrame 1.35s var(--ease) both;transform-origin:center bottom}
- .art-photo{animation:mobileImageIn 1.35s var(--ease) both}
- .art-blueprint,.art-scan{animation:none;display:none}
- .hero .eyebrow{animation:mobileCopyIn .65s .65s var(--ease) both}
- .motion-title .title-mask>span{animation:titleRise .72s .76s var(--ease) both}
- .motion-title .title-mask:nth-child(2)>span{animation-delay:.83s}
- .motion-title .title-mask:nth-child(3)>span{animation-delay:.90s}
- .motion-title .title-mask:nth-child(4)>span{animation-delay:.97s}
- .motion-title .title-mask:nth-child(5)>span{animation-delay:1.04s}
- .hero .intro p{animation:mobileCopyIn .65s 1.13s var(--ease) both}
- .hero .reveal-link{animation-delay:1.23s}
- .hero .reveal-link:nth-child(2){animation-delay:1.34s}
-}
-@keyframes mobileImageFrame{0%{clip-path:inset(24% 18% 8% 18% round 26px);opacity:0}24%{opacity:1}100%{clip-path:inset(0 round 0px);opacity:1}}
-@keyframes mobileImageIn{from{transform:translateY(18%) scale(.84);opacity:0}25%{opacity:1}to{transform:translateY(0) scale(1);opacity:1}}
-@keyframes mobileHeaderIn{from{opacity:0;translate:0 -15px}to{opacity:1;translate:0 0}}
-@keyframes mobileCopyIn{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
-
 /* Project image ribbon */
-.project-gallery[hidden],.gallery-slide[hidden]{display:none}
 .project-gallery{margin:36px -4.35% 0;overflow:hidden}
 .gallery-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 4.2% 12px;font:11px Inter,Arial,sans-serif;letter-spacing:.12em}
-.gallery-pause{border:1px solid var(--line);border-radius:30px;background:#fff;color:var(--ink);padding:8px 14px;font-size:11px;letter-spacing:0}
-.gallery-track{display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:none;scroll-behavior:auto;padding:0 4.2% 10px;overscroll-behavior-inline:contain;touch-action:pan-x pan-y}
-.gallery-track::-webkit-scrollbar{display:none}
-.gallery-slide{flex:0 0 38%;min-width:0;margin:0;scroll-snap-align:none}
+.gallery-track{display:flex;gap:16px;overflow-x:auto;scroll-padding-inline:4.2%;scroll-snap-type:x proximity;scroll-behavior:auto;padding:0 4.2% 10px;overscroll-behavior-inline:contain;touch-action:pan-x pan-y}
+.gallery-slide{flex:0 0 38%;min-width:0;margin:0;scroll-snap-align:start}
 .gallery-slide img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:8px}
 .gallery-slide figcaption{display:flex;align-items:center;gap:12px;padding:12px 0;font-size:13px;font-weight:600}
 .gallery-slide figcaption span{font:11px monospace;color:#63829d}
 .gallery-note{display:block;margin:0 4.2%;font-size:11px;color:#5b7995}
 
-@media(max-width:760px){.project-gallery{margin:28px -6.82% 0}.gallery-track{gap:12px;padding:0 6% 8px}.gallery-toolbar,.gallery-note{margin-left:6%;margin-right:6%}.gallery-slide{flex-basis:79%}.gallery-slide img{border-radius:6px}.gallery-slide figcaption{font-size:12px}}
+@media(max-width:760px){.project-gallery{margin:28px -6.82% 0}.gallery-track{gap:12px;padding:0 6% 8px;scroll-padding-inline:6%}.gallery-toolbar,.gallery-note{margin-left:6%;margin-right:6%}.gallery-slide{flex-basis:79%}.gallery-slide img{border-radius:6px}.gallery-slide figcaption{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.gallery-track{scroll-behavior:auto}}
 
-/* Native touch scrolling: avoid snap/animation contention on iOS */
-.gallery-track{scroll-behavior:auto;scroll-snap-type:none;-webkit-overflow-scrolling:touch}
-.gallery-slide img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+
+/* Technical drawing and photography share the same crop. */
+.art { background: none; overflow: hidden; }
+.art-layer {
+  position: absolute;
+  inset: 0;
+  background: url('impianto-blueprint.jpg') center right / contain no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .art-layer { animation: blueprint-to-photo 600ms ease-out; }
+}
+@keyframes blueprint-to-photo {
+  from { filter: grayscale(1) contrast(.88); }
+  to { filter: none; }
+}
+
+.hero h1 { font-size: clamp(34px, 4.15vw, 76px); }
+.menu {
+  width: auto;
+  min-width: 88px;
+  flex-direction: row;
+  gap: 10px;
+  padding: 0 12px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.menu-icon { display: grid; gap: 5px; width: 18px; }
+.menu-icon i { height: 1.5px; background: currentColor; transition: transform .2s var(--ease); }
+.nav-open .menu-icon i:first-child { transform: translateY(3.25px) rotate(45deg); }
+.nav-open .menu-icon i:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+.mobile-glass { padding: 9px 16px; background: #eff5fbf2; }
+.mobile-glass a {
+  min-height: 58px;
+  padding: 10px 4px;
+  font-size: clamp(22px, 6vw, 34px);
+  font-weight: 800;
+  border-radius: 0;
+}
+.mobile-glass a:last-child { border-bottom: 0; }
+.mobile-glass a span { font-size: .75em; }
+.gallery-track:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+.gallery-slide img { -webkit-user-drag: none; user-select: none; }
+
+@media (max-width: 760px) {
+  .hero { margin-top: -82px; padding-top: 108px; }
+  .hero h1 { font-size: clamp(28px, 9.5vw, 57px); margin: 16px 0; }
+  .intro p { margin-bottom: 10px; }
+  .art { width: calc(100% / .88); margin: 0 -6.818%; aspect-ratio: 1.16; }
+  .art-layer { background-position: center; background-size: cover; }
+  .art::after { background: linear-gradient(180deg, #ffffffb0, transparent 22%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-icon i { transition: none; }
+}
