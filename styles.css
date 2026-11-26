@@ -109,3 +109,24 @@ header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
 @keyframes scanAcross{0%{left:0;opacity:0}12%{opacity:.65}88%{opacity:.65}100%{left:100%;opacity:0}}
 @media(max-width:760px){.art-layer{background-position:center;background-size:cover}.art{transform:translate3d(0,var(--art-shift,0px),0)}}
 @media(prefers-reduced-motion:reduce){.motion-title .title-mask>span,.art-photo,.art-blueprint,.art-scan{animation:none}.art-blueprint,.art-scan{display:none}.art{transform:none}.hero{background-position:0 0}}
+
+/* Mobile cinematic entrance: image first, then interface and copy */
+@media(max-width:760px) and (prefers-reduced-motion:no-preference){
+ header{animation:mobileHeaderIn .65s .72s var(--ease) both}
+ .hero .art{clip-path:inset(0);animation:mobileImageFrame 1.35s var(--ease) both;transform-origin:center bottom}
+ .art-photo{animation:mobileImageIn 1.35s var(--ease) both}
+ .art-blueprint,.art-scan{animation:none;display:none}
+ .hero .eyebrow{animation:mobileCopyIn .65s .65s var(--ease) both}
+ .motion-title .title-mask>span{animation:titleRise .72s .76s var(--ease) both}
+ .motion-title .title-mask:nth-child(2)>span{animation-delay:.83s}
+ .motion-title .title-mask:nth-child(3)>span{animation-delay:.90s}
+ .motion-title .title-mask:nth-child(4)>span{animation-delay:.97s}
+ .motion-title .title-mask:nth-child(5)>span{animation-delay:1.04s}
+ .hero .intro p{animation:mobileCopyIn .65s 1.13s var(--ease) both}
+ .hero .reveal-link{animation-delay:1.23s}
+ .hero .reveal-link:nth-child(2){animation-delay:1.34s}
+}
+@keyframes mobileImageFrame{0%{clip-path:inset(24% 18% 8% 18% round 26px);opacity:0}24%{opacity:1}100%{clip-path:inset(0 round 0px);opacity:1}}
+@keyframes mobileImageIn{from{transform:translateY(18%) scale(.84);opacity:0}25%{opacity:1}to{transform:translateY(0) scale(1);opacity:1}}
+@keyframes mobileHeaderIn{from{opacity:0;translate:0 -15px}to{opacity:1;translate:0 0}}
+@keyframes mobileCopyIn{from{opacity:0;translate:0 14px}to{opacity:1;translate:0 0}}
