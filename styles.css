@@ -136,13 +136,17 @@ header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
 .project-gallery{margin:36px -4.35% 0;overflow:hidden}
 .gallery-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 4.2% 12px;font:11px Inter,Arial,sans-serif;letter-spacing:.12em}
 .gallery-pause{border:1px solid var(--line);border-radius:30px;background:#fff;color:var(--ink);padding:8px 14px;font-size:11px;letter-spacing:0}
-.gallery-track{display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;padding:0 4.2% 10px;overscroll-behavior-inline:contain;touch-action:pan-x pan-y}
+.gallery-track{display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:none;scroll-behavior:auto;padding:0 4.2% 10px;overscroll-behavior-inline:contain;touch-action:pan-x pan-y}
 .gallery-track::-webkit-scrollbar{display:none}
-.gallery-slide{flex:0 0 38%;min-width:0;margin:0;scroll-snap-align:start}
+.gallery-slide{flex:0 0 38%;min-width:0;margin:0;scroll-snap-align:none}
 .gallery-slide img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:8px}
 .gallery-slide figcaption{display:flex;align-items:center;gap:12px;padding:12px 0;font-size:13px;font-weight:600}
 .gallery-slide figcaption span{font:11px monospace;color:#63829d}
 .gallery-note{display:block;margin:0 4.2%;font-size:11px;color:#5b7995}
-.gallery-track.is-auto{scroll-snap-type:none}
+
 @media(max-width:760px){.project-gallery{margin:28px -6.82% 0}.gallery-track{gap:12px;padding:0 6% 8px}.gallery-toolbar,.gallery-note{margin-left:6%;margin-right:6%}.gallery-slide{flex-basis:79%}.gallery-slide img{border-radius:6px}.gallery-slide figcaption{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.gallery-track{scroll-behavior:auto}}
+
+/* Native touch scrolling: avoid snap/animation contention on iOS */
+.gallery-track{scroll-behavior:auto;scroll-snap-type:none;-webkit-overflow-scrolling:touch}
+.gallery-slide img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
