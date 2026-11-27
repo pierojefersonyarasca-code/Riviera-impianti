@@ -156,5 +156,6 @@ header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
   .art { transform: none; }
 }
 
-/* Updated company wordmark */
-.logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;white-space:nowrap;line-height:1}.logo-main{display:block;font-weight:900;letter-spacing:-.055em;font-size:clamp(25px,2.4vw,34px)}.logo small{font-size:clamp(8px,.8vw,11px);letter-spacing:.17em;font-weight:700;margin-top:5px;line-height:1.1}@media(max-width:760px){.logo-main{font-size:27px}.logo small{font-size:9px;letter-spacing:.13em}}
+
+/* Company wordmark */
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;white-space:nowrap;line-height:1;flex-shrink:0}.logo-main{display:block;font-weight:900;letter-spacing:-.045em;font-size:clamp(19px,1.85vw,29px)}.logo small{font-size:10px;letter-spacing:.35em;font-weight:700;margin-top:5px;line-height:1.1}@media(max-width:760px){.logo-main{font-size:clamp(17px,5.3vw,24px)}.logo small{font-size:9px;letter-spacing:.32em}}
