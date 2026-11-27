@@ -24,7 +24,7 @@
  meter.setAttribute('aria-hidden','true');
  meter.style.cssText='position:fixed;top:0;left:0;width:100%;height:2px;background:#c9202a;transform:scaleX(0);transform-origin:left;z-index:9999;pointer-events:none';
  document.body.appendChild(meter);
- function cinematic(p){paint(p);if(intro)intro.style.transform='translate3d(0,'+(-p*(mobile()?18:32))+'px,0)';if(stage){stage.style.clipPath='inset(0 0 '+(Math.max(0,(p-.55)/.45)*14)+'% 0)';}}
+ function cinematic(p){paint(p);if(intro)intro.style.transform='translate3d(0,'+(-p*(mobile()?18:32))+'px,0)';if(stage){stage.style.removeProperty('clip-path');}}
  function framePaint(el,p){const t=smooth(clamp(p));el.style.opacity=String(.65+.35*t);const img=el.querySelector('img');if(img&&el.closest('#lavora'))img.style.transform='translate3d('+((1-t)*-12)+'px,0,0)';}
  function meterPaint(p){meter.style.transform='scaleX('+p+')';}
  const strip=document.querySelector('.strip');
