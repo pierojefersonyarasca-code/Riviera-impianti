@@ -1,28 +1,10 @@
 'use strict';
-const trigger=document.querySelector('.menu');
-const logo=document.querySelector('.logo');
-const panel=document.getElementById('mobileNav');
-const desktop=matchMedia('(min-width:1101px)');
-function setMenu(open,restoreFocus=false){
-  open=Boolean(open)&&!desktop.matches;
-  document.body.classList.toggle('nav-open',open);
-  trigger.setAttribute('aria-expanded',String(open));
-  trigger.querySelector('.menu-label').textContent=open?'Chiudi':'Menu';
-  panel.inert=!open;
-  panel.setAttribute('aria-hidden',String(!open));
-  if(restoreFocus)trigger.focus();
-}
-trigger.addEventListener('click',()=>setMenu(trigger.getAttribute('aria-expanded')!=='true'));
-logo.addEventListener('click',()=>setMenu(false));
-panel.addEventListener('click',event=>{
-  const link=event.target.closest('a');
-  if(link){setMenu(false);const target=document.querySelector(link.hash);if(target){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}}
-});
-document.addEventListener('keydown',event=>{
-  if(event.key==='Escape'&&trigger.getAttribute('aria-expanded')==='true'){setMenu(false,true);}
-});
-document.addEventListener('pointerdown',event=>{
-  if(!event.target.closest('header')&&trigger.getAttribute('aria-expanded')==='true')setMenu(false);
-});
-if(desktop.addEventListener)desktop.addEventListener('change',()=>setMenu(false));
-else desktop.addListener(()=>setMenu(false));
+(()=>{
+const trigger=document.querySelector('header .menu'),panel=document.getElementById('mobileNav'),close=panel.querySelector('.engineering-close');
+function openMenu(){if(panel.open)return;panel.showModal();trigger.setAttribute('aria-expanded','true');document.body.classList.add('nav-open');close.focus({preventScroll:true});}
+function closeMenu(){if(panel.open)panel.close();}
+trigger.addEventListener('click',openMenu);
+close.addEventListener('click',closeMenu);
+panel.addEventListener('close',()=>{trigger.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');});
+panel.addEventListener('click',e=>{const link=e.target.closest('a[href^="#"]');if(!link)return;e.preventDefault();const target=document.getElementById(link.hash.slice(1));closeMenu();if(target){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});history.replaceState(null,'',link.hash);}});
+})();
