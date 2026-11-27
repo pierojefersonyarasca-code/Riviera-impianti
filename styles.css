@@ -187,3 +187,29 @@ header>.cta{background:transparent;border:1px solid #ffffff80;border-radius:0}
 
 /* Mobile framing: preserve the complete landscape photograph, blending into the hero. */
 @media(max-width:760px){.hero{min-height:100svh;padding-bottom:clamp(235px,66vw,420px)}.hero .art{inset:0;transform:none}.hero .art-layer{background-size:100% auto;background-position:center bottom;background-color:#101e30}.hero .art:after{background:linear-gradient(180deg,#101e30 0%,#101e30 40%,#101e30df 53%,#101e3000 78%,#101e3030 100%)}.hero-scroll{bottom:12px}}
+
+/* Approved portrait refinery artwork, kept at native aspect ratio. */
+.hero{min-height:max(100svh,75vw);padding:0;display:block}
+.hero .art{inset:0;transform:none}
+.hero .art-layer{background:#101e30 url("DF7CB7B5-240D-4047-B627-83602C641A1C.PNG") right center/cover no-repeat}
+.hero .art:after{background:linear-gradient(90deg,#08172545,transparent 70%)}
+.hero .intro{position:absolute;top:18%;left:4.5%;width:90%;max-width:none}
+.hero h1{font-size:clamp(42px,7.1vw,120px);letter-spacing:-.065em;line-height:.92;margin:2.4vw 0 1.7vw;font-weight:700}
+.hero .intro p{max-width:52ch}
+.hero .eyebrow{letter-spacing:.32em}
+.hero .reveal-actions{max-width:clamp(190px,21vw,290px)}
+.hero-scroll{bottom:3%}
+@media (min-width:761px) and (max-aspect-ratio:1/1){.hero{min-height:0;aspect-ratio:3/4}.hero .art-layer{background-size:100% auto;background-position:center top}}
+@media(max-width:760px){
+.hero{min-height:100svh;aspect-ratio:auto;padding:0}
+.hero .art{inset:0;transform:none}
+.hero .art-layer{background-size:cover;background-position:60% center}
+.hero .art:after{background:linear-gradient(180deg,#08172525 0%,#08172545 38%,transparent 70%)}
+.hero .intro{top:max(112px,17%);left:4.5%;width:91%;max-width:none}
+.hero h1{font-size:clamp(32px,10.1vw,68px);line-height:.94;margin:22px 0 16px;letter-spacing:-.065em}
+.hero .intro p{font-size:clamp(13px,3.5vw,17px);max-width:35ch;line-height:1.5;margin-bottom:22px}
+.hero .eyebrow{font-size:9px;letter-spacing:.23em}
+.hero .reveal-link{min-height:48px}
+.hero-scroll{bottom:4%}
+}
+@media(max-width:760px) and (min-aspect-ratio:3/4){.hero{min-height:720px;aspect-ratio:3/4}.hero .art-layer{background-position:center top}}
