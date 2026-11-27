@@ -159,3 +159,28 @@ header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
 
 /* Company wordmark */
 .logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;white-space:nowrap;line-height:1;flex-shrink:0}.logo-main{display:block;font-weight:900;letter-spacing:-.045em;font-size:clamp(19px,1.85vw,29px)}.logo small{font-size:10px;letter-spacing:.35em;font-weight:700;margin-top:5px;line-height:1.1}@media(max-width:760px){.logo-main{font-size:clamp(17px,5.3vw,24px)}.logo small{font-size:9px;letter-spacing:.32em}}
+
+/* Cinematic engineering identity — full-height editorial hero */
+header{top:0;margin:0;width:100%;height:96px;padding:0 4.5%;border:0;border-radius:0;color:white;background:linear-gradient(180deg,#0a1728e8,#0a172880 65%,transparent);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+header nav{background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;font-size:14px;font-weight:600;gap:14px}
+header nav a:is(:hover,:focus-visible){background:#ffffff20}
+header>.cta{background:transparent;border:1px solid #ffffff80;border-radius:0}
+.logo-main{font-family:"Space Grotesk",Inter,sans-serif;font-size:clamp(20px,2.15vw,34px);letter-spacing:-.065em}.logo small{letter-spacing:.45em}
+.menu{color:white;background:transparent;border:1px solid #ffffff70;box-shadow:none;border-radius:0}
+.mobile-glass{left:4%;right:4%;background:#101e30f5;color:white;border-color:#ffffff30;box-shadow:0 12px 35px #0005}
+.mobile-glass a{border-color:#ffffff26}
+.hero{margin-top:-96px;min-height:100vh;min-height:100svh;padding:145px 4.5% 90px;display:flex;align-items:center;color:white;background:#101e30;isolation:isolate}
+.hero .art{position:absolute;inset:-25px 0 -60px;width:auto;aspect-ratio:auto;margin:0;z-index:-1;transform:translate3d(0,var(--art-shift,0px),0)}
+.hero .art-layer{background:#17283c url("https://images.pexels.com/photos/4883682/pexels-photo-4883682.jpeg?auto=compress&cs=tinysrgb&w=2200") 65% center/cover no-repeat;animation:none}
+.hero .art:after{background:linear-gradient(90deg,#07111ee8 0%,#0b1829b3 40%,#0b182925 85%),linear-gradient(0deg,#07111eaa,transparent 40%)}
+.hero .intro{width:100%;max-width:960px;position:relative;z-index:1}
+.hero .eyebrow{font-size:clamp(10px,1vw,14px);font-weight:500;letter-spacing:.33em;color:#f2f5f8;gap:20px}
+.hero .eyebrow:before{display:none}.hero .eyebrow:after{content:"";width:clamp(30px,9vw,145px);height:1px;background:#ffffff90}
+.hero h1{font-family:"Space Grotesk",Inter,Arial,sans-serif;font-size:clamp(48px,7.4vw,126px);font-weight:700;line-height:.9;letter-spacing:-.075em;margin:32px 0 26px;overflow-wrap:normal}
+.hero h1 span{display:block}.hero-accent{color:#ff343a}
+.hero .intro p{max-width:55ch;font-size:clamp(16px,1.6vw,23px);line-height:1.45;margin:0 0 32px;color:#f3f5f7}
+.hero .reveal-actions{max-width:290px}.hero .reveal-link{border:1px solid #ffffffa0;color:white;padding:9px 20px;min-height:60px;font-size:16px}.hero .reveal-link:before,.hero .reveal-link:after{display:none}.hero .reveal-arrow{background:transparent;color:white}.hero .reveal-link:hover{background:#ffffff18}
+.hero-scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:white;font-size:40px;line-height:1}
+.hero a:focus-visible,header a:focus-visible,header button:focus-visible{outline-color:white}
+@media(max-width:760px){header{height:76px;padding:0 5%;top:0;margin:0;width:100%}.logo-main{font-size:clamp(17px,5vw,24px)}.logo small{font-size:9px}.menu{min-width:0;width:44px;height:44px;padding:0}.menu-label{display:none}.menu-icon{width:21px}.hero{margin-top:-76px;min-height:115svh;padding:132px 5% 150px;align-items:flex-start;justify-content:flex-start}.hero .intro{width:100%;max-width:none}.hero .art{inset:-20px 0 -55px;margin:0;width:auto;aspect-ratio:auto}.hero .art-layer{background-position:65% center}.hero .art:after{background:linear-gradient(180deg,#07111ee0 0%,#07111ed0 34%,#07111e45 68%,#07111e70 100%)}.hero h1{font-size:clamp(34px,10vw,68px);margin:26px 0 20px;line-height:.94;letter-spacing:-.065em}.hero .intro p{font-size:15px;max-width:35ch;margin-bottom:24px}.hero .eyebrow{letter-spacing:.22em;font-size:10px;gap:12px}.hero .reveal-actions{max-width:235px}.hero .reveal-link{min-height:52px;font-size:14px;padding:6px 12px}}
+@media(prefers-reduced-motion:reduce){.hero .art{transform:none}}
