@@ -7,10 +7,22 @@
  const clamp=n=>Math.min(1,Math.max(0,n));
  const mobile=()=>matchMedia('(max-width:760px)').matches;
  const paint=(p)=>{art.style.transformOrigin=mobile()?'60% 65%':'65% 55%';art.style.transform='scale('+(1+p*(mobile()?.2584:.3264))+')';};
- let raf=0, cleanup=()=>{}, generation=0;
- function reset(){art.style.removeProperty('transform');art.style.removeProperty('transform-origin');sections.forEach(el=>el.style.removeProperty('transform'));}
+ let raf=0, cleanup=()=>{};
+ const chapters=[...document.querySelectorAll('.editorial-section')];
+ const project=document.querySelector('#progetti');
+ const beats=[...chapters.map(el=>({el,items:[...el.querySelectorAll('.editorial-copy > .eyebrow,.editorial-copy > h2,.editorial-copy > p,.editorial-copy > a')]})),...(project?[{el:project,items:[...project.querySelectorAll(':scope > .eyebrow,:scope > h2,:scope > p,:scope > a')]}]:[])];
+ const nodes=beats.flatMap(b=>b.items);
+ const smooth=p=>p*p*(3-2*p);
+ function chapterPaint(b,p){b.items.forEach((el,i)=>{const t=smooth(clamp((p-i*.065)/.78));el.style.transform='translate3d(0,'+((1-t)*(mobile()?20:36))+'px,0)';el.style.opacity=String(.55+.45*t);});}
+ function chapterProgress(b){const r=b.el.getBoundingClientRect();return clamp((innerHeight*.94-r.top)/(innerHeight*.44));}
+ const gallery=[...document.querySelectorAll('.gallery-slide img')];
+ function galleryPaint(el,p){el.style.transform='scale('+(1+.045*Math.sin(Math.PI*p))+')';}
+ const strip=document.querySelector('.strip');
+ const stripItems=strip?[...strip.querySelectorAll('a')]:[];
+ function stripPaint(p){stripItems.forEach((el,i)=>{const t=smooth(clamp((p-i*.09)/.72));const svg=el.querySelector('svg');if(svg)svg.style.transform='translate3d(0,'+((1-t)*-12)+'px,0) rotate('+((1-t)*-8)+'deg)';});}
+ function reset(){art.style.removeProperty('transform');art.style.removeProperty('transform-origin');sections.forEach(el=>el.style.removeProperty('transform'));nodes.forEach(el=>{el.style.removeProperty('transform');el.style.removeProperty('opacity');});gallery.forEach(el=>el.style.removeProperty('transform'));stripItems.forEach(el=>el.querySelector('svg')?.style.removeProperty('transform'));}
  function native(){
-  function render(){raf=0;if(reduced.matches)return;const r=hero.getBoundingClientRect();paint(clamp(-r.top/(r.height*.6)));for(const el of sections){const b=el.parentElement.getBoundingClientRect();const p=clamp((innerHeight-b.top)/(innerHeight+b.height));el.style.transform='scale('+(1+.13*Math.sin(Math.PI*p))+')';}}
+  function render(){raf=0;if(reduced.matches)return;const r=hero.getBoundingClientRect();paint(clamp(-r.top/(r.height*.6)));for(const el of sections){const b=el.parentElement.getBoundingClientRect();const p=clamp((innerHeight-b.top)/(innerHeight+b.height));el.style.transform='scale('+(1+.13*Math.sin(Math.PI*p))+')';}for(const b of beats)chapterPaint(b,chapterProgress(b));for(const el of gallery){const b=el.getBoundingClientRect();galleryPaint(el,clamp((innerHeight-b.top)/(innerHeight+b.height)));}if(strip){const b=strip.getBoundingClientRect();stripPaint(clamp((innerHeight*.97-b.top)/(innerHeight*.38)));}}
   function schedule(){if(!raf)raf=requestAnimationFrame(render);}
   addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});schedule();
   return ()=>{removeEventListener('scroll',schedule);removeEventListener('resize',schedule);cancelAnimationFrame(raf);raf=0;reset();};
@@ -22,6 +34,9 @@
    const ctx=gsap.context(()=>{
     const state={p:0};
     gsap.to(state,{p:1,ease:'none',onUpdate:()=>paint(state.p),scrollTrigger:{trigger:hero,start:'top top',end:()=>'+='+Math.round(hero.offsetHeight*.6),scrub:true,invalidateOnRefresh:true}});
+    if(strip){const state={p:0};gsap.to(state,{p:1,ease:'none',onUpdate:()=>stripPaint(state.p),scrollTrigger:{trigger:strip,start:'top 97%',end:'top 59%',scrub:true,invalidateOnRefresh:true}});}
+    for(const b of beats){const state={p:0};gsap.to(state,{p:1,ease:'none',onUpdate:()=>chapterPaint(b,state.p),scrollTrigger:{trigger:b.el,start:'top 94%',end:'top 50%',scrub:true,invalidateOnRefresh:true}});}
+    for(const el of gallery){const state={p:0};gsap.to(state,{p:1,ease:'none',onUpdate:()=>galleryPaint(el,state.p),scrollTrigger:{trigger:el.parentElement,start:'top bottom',end:'bottom top',scrub:true,invalidateOnRefresh:true}});}
     for(const el of sections){gsap.fromTo(el,{scale:1},{scale:1.13,ease:'sine.inOut',scrollTrigger:{trigger:el.parentElement,start:'top bottom',end:'bottom top',scrub:true,invalidateOnRefresh:true}});}
    });
    ScrollTrigger.refresh();
