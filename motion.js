@@ -6,7 +6,7 @@
  const sections=[...document.querySelectorAll('.editorial-section:not(#lavora) .editorial-image img')];
  const clamp=n=>Math.min(1,Math.max(0,n));
  const mobile=()=>matchMedia('(max-width:760px)').matches;
- const paint=(p)=>{art.style.transformOrigin=mobile()?'60% 65%':'65% 55%';art.style.transform='scale('+(1+p*(mobile()?.2584:.3264))+')';};
+ const paint=(p)=>{art.style.transform='translate3d(0,'+(p*(mobile()?95:150))+'px,0)';};
  let raf=0, cleanup=()=>{};
  const chapters=[...document.querySelectorAll('.editorial-section')];
  const project=document.querySelector('#progetti');
@@ -24,15 +24,15 @@
  meter.setAttribute('aria-hidden','true');
  meter.style.cssText='position:fixed;top:0;left:0;width:100%;height:2px;background:#c9202a;transform:scaleX(0);transform-origin:left;z-index:9999;pointer-events:none';
  document.body.appendChild(meter);
- function cinematic(p){paint(p);if(intro)intro.style.transform='translate3d(0,'+(p*(mobile()?32:75))+'px,0)';if(stage)stage.style.filter='brightness('+(1-.16*p)+')';}
+ function cinematic(p){paint(p);if(intro)intro.style.transform='translate3d(0,'+(-p*(mobile()?18:32))+'px,0)';if(stage){stage.style.clipPath='inset(0 0 '+(Math.max(0,(p-.55)/.45)*14)+'% 0)';}}
  function framePaint(el,p){const t=smooth(clamp(p));el.style.opacity=String(.65+.35*t);const img=el.querySelector('img');if(img&&el.closest('#lavora'))img.style.transform='translate3d('+((1-t)*-12)+'px,0,0)';}
  function meterPaint(p){meter.style.transform='scaleX('+p+')';}
  const strip=document.querySelector('.strip');
  const stripItems=strip?[...strip.querySelectorAll('a')]:[];
  function stripPaint(p){stripItems.forEach((el,i)=>{const t=smooth(clamp((p-i*.09)/.72));const svg=el.querySelector('svg');if(svg)svg.style.transform='translate3d(0,'+((1-t)*-12)+'px,0) rotate('+((1-t)*-8)+'deg)';});}
- function reset(){if(intro)intro.style.removeProperty('transform');if(stage)stage.style.removeProperty('filter');frames.forEach(el=>{el.style.removeProperty('opacity');if(el.closest('#lavora'))el.querySelector('img')?.style.removeProperty('transform');});meterPaint(0);art.style.removeProperty('transform');art.style.removeProperty('transform-origin');sections.forEach(el=>el.style.removeProperty('transform'));nodes.forEach(el=>{el.style.removeProperty('transform');el.style.removeProperty('opacity');});gallery.forEach(el=>el.style.removeProperty('transform'));stripItems.forEach(el=>el.querySelector('svg')?.style.removeProperty('transform'));}
+ function reset(){if(intro)intro.style.removeProperty('transform');if(stage){stage.style.removeProperty('filter');stage.style.removeProperty('clip-path');}frames.forEach(el=>{el.style.removeProperty('opacity');if(el.closest('#lavora'))el.querySelector('img')?.style.removeProperty('transform');});meterPaint(0);art.style.removeProperty('transform');art.style.removeProperty('transform-origin');sections.forEach(el=>el.style.removeProperty('transform'));nodes.forEach(el=>{el.style.removeProperty('transform');el.style.removeProperty('opacity');});gallery.forEach(el=>el.style.removeProperty('transform'));stripItems.forEach(el=>el.querySelector('svg')?.style.removeProperty('transform'));}
  function native(){
-  function render(){raf=0;if(reduced.matches)return;const r=hero.getBoundingClientRect();cinematic(clamp(-r.top/(r.height*.6)));meterPaint(clamp(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)));for(const el of frames){const b=el.getBoundingClientRect();framePaint(el,clamp((innerHeight*.98-b.top)/(innerHeight*.38)));}for(const el of sections){const b=el.parentElement.getBoundingClientRect();const p=clamp((innerHeight-b.top)/(innerHeight+b.height));el.style.transform='scale('+(1+.13*Math.sin(Math.PI*p))+')';}for(const b of beats)chapterPaint(b,chapterProgress(b));for(const el of gallery){const b=el.getBoundingClientRect();galleryPaint(el,clamp((innerHeight-b.top)/(innerHeight+b.height)));}if(strip){const b=strip.getBoundingClientRect();stripPaint(clamp((innerHeight*.97-b.top)/(innerHeight*.38)));}}
+  function render(){raf=0;if(reduced.matches)return;const r=hero.getBoundingClientRect();cinematic(clamp(-r.top/(r.height*.85)));meterPaint(clamp(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)));for(const el of frames){const b=el.getBoundingClientRect();framePaint(el,clamp((innerHeight*.98-b.top)/(innerHeight*.38)));}for(const el of sections){const b=el.parentElement.getBoundingClientRect();const p=clamp((innerHeight-b.top)/(innerHeight+b.height));el.style.transform='scale('+(1+.13*Math.sin(Math.PI*p))+')';}for(const b of beats)chapterPaint(b,chapterProgress(b));for(const el of gallery){const b=el.getBoundingClientRect();galleryPaint(el,clamp((innerHeight-b.top)/(innerHeight+b.height)));}if(strip){const b=strip.getBoundingClientRect();stripPaint(clamp((innerHeight*.97-b.top)/(innerHeight*.38)));}}
   function schedule(){if(!raf)raf=requestAnimationFrame(render);}
   addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule,{passive:true});schedule();
   return ()=>{removeEventListener('scroll',schedule);removeEventListener('resize',schedule);cancelAnimationFrame(raf);raf=0;reset();};
@@ -43,8 +43,8 @@
    gsap.registerPlugin(ScrollTrigger);
    const ctx=gsap.context(()=>{
     const state={p:0};
-    gsap.to(state,{p:1,ease:'none',onUpdate:()=>cinematic(state.p),scrollTrigger:{trigger:hero,start:'top top',end:()=>'+='+Math.round(hero.offsetHeight*.6),scrub:true,invalidateOnRefresh:true}});
-    if(!mobile()&&hero.offsetHeight<=innerHeight*1.15){ScrollTrigger.create({trigger:hero,start:'top top',end:()=>'+='+Math.round(innerHeight*.32),pin:true,pinSpacing:true,invalidateOnRefresh:true});}
+    gsap.to(state,{p:1,ease:'none',onUpdate:()=>cinematic(state.p),scrollTrigger:{trigger:hero,start:'top top',end:()=>'+='+Math.round(hero.offsetHeight*.85),scrub:true,invalidateOnRefresh:true}});
+    
     for(const el of frames){const state={p:0};gsap.to(state,{p:1,ease:'none',onUpdate:()=>framePaint(el,state.p),scrollTrigger:{trigger:el.closest('.editorial-section'),start:'top 98%',end:'top 60%',scrub:true,invalidateOnRefresh:true}});}
     ScrollTrigger.create({start:0,end:'max',onUpdate:self=>meterPaint(self.progress)});
     if(strip){const state={p:0};gsap.to(state,{p:1,ease:'none',onUpdate:()=>stripPaint(state.p),scrollTrigger:{trigger:strip,start:'top 97%',end:'top 59%',scrub:true,invalidateOnRefresh:true}});}
