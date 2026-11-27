@@ -376,3 +376,9 @@ html:has(.engineering-menu[open]){overflow:hidden}
 /* Careers: frame the welding arc and flange in the clear portion of the image. */
 #lavora .editorial-image img{object-position:83% center!important}
 @media(max-width:760px){#lavora .editorial-image img{object-position:86% center!important}#lavora .editorial-image::after{background:linear-gradient(to left,#f2f4f6 0%,#f2f4f6f5 20%,#f2f4f699 32%,transparent 49%)}}
+
+/* Careers photo: keep both the branded back and welding arc in the visible composition. */
+#lavora .editorial-image{width:76%;}
+#lavora .editorial-image img{object-position:52% center!important;object-fit:cover;}
+#lavora .editorial-image::after{background:linear-gradient(to left,#f2f4f6 0%,#f2f4f6 23%,rgba(242,244,246,.94) 30%,rgba(242,244,246,.38) 40%,transparent 51%)}
+@media(max-width:760px){#lavora.editorial-section{grid-template-columns:minmax(0,49%) minmax(0,51%)}#lavora .editorial-image{width:100%;background:#f2f4f6}#lavora .editorial-image img{width:62%;height:100%;object-fit:contain;object-position:left center!important;}#lavora .editorial-image::after{background:linear-gradient(to left,#f2f4f6 0%,#f2f4f6 39%,rgba(242,244,246,.98) 45%,rgba(242,244,246,.25) 50%,transparent 56%)} }
