@@ -349,3 +349,26 @@ html:has(.engineering-menu[open]){overflow:hidden}
 :is(#azienda,#lavora) .editorial-image{margin:12px 4%;min-width:0}
 :is(#azienda,#lavora) .editorial-image figcaption{font-size:8px}
 }
+
+/* Seamless editorial photography: overlap the text column, fade toward copy. */
+:is(#azienda,#lavora).editorial-section{background:#f2f4f6;align-items:stretch;min-height:clamp(280px,31vw,460px)}
+:is(#azienda,#lavora) .editorial-copy{z-index:2;align-self:center}
+:is(#azienda,#lavora) .editorial-image{position:absolute;inset:0 0 0 auto;width:62%;height:100%;margin:0;min-height:0;overflow:hidden;clip-path:none;z-index:0}
+#lavora .editorial-image{inset:0 auto 0 0}
+:is(#azienda,#lavora) .editorial-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#azienda .editorial-image img{object-position:60% center!important}
+#lavora .editorial-image img{object-position:25% center!important}
+:is(#azienda,#lavora) .editorial-image::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to right,#f2f4f6 0%,rgba(242,244,246,.98) 9%,rgba(242,244,246,.75) 22%,rgba(242,244,246,.15) 43%,transparent 57%)}
+#lavora .editorial-image::after{background:linear-gradient(to left,#f2f4f6 0%,rgba(242,244,246,.98) 9%,rgba(242,244,246,.75) 22%,rgba(242,244,246,.15) 43%,transparent 57%)}
+:is(#azienda,#lavora) .editorial-image figcaption{position:absolute;bottom:8px;right:8px;z-index:1;background:#0b1825b8;color:#fff;padding:4px 6px;font-size:8px}
+#lavora .editorial-image figcaption{right:auto;left:8px}
+@media(max-width:760px){
+#azienda.editorial-section{grid-template-columns:minmax(0,54%) minmax(0,46%);min-height:265px}
+#lavora.editorial-section{grid-template-columns:minmax(0,46%) minmax(0,54%);min-height:265px}
+:is(#azienda,#lavora) .editorial-image{width:65%;height:100%}
+:is(#azienda,#lavora) .editorial-copy{padding-top:30px;padding-bottom:30px}
+#azienda .editorial-copy{padding-left:9%;padding-right:4px}
+#lavora .editorial-copy{padding-left:7px;padding-right:9%}
+#azienda .editorial-image::after{background:linear-gradient(to right,#f2f4f6 0%,rgba(242,244,246,.96) 19%,rgba(242,244,246,.6) 35%,transparent 58%)}
+#lavora .editorial-image::after{background:linear-gradient(to left,#f2f4f6 0%,rgba(242,244,246,.96) 19%,rgba(242,244,246,.6) 35%,transparent 58%)}
+}
