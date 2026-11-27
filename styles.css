@@ -412,3 +412,11 @@ html:has(.engineering-menu[open]){overflow:hidden}
 
 /* Soften only the seam of the careers photograph. */
 #lavora .editorial-image::after{background:linear-gradient(to right,#f2f4f6 0%,rgba(242,244,246,.86) 5%,rgba(242,244,246,.48) 12%,rgba(242,244,246,.12) 22%,transparent 32%)}
+
+/* Careers: portrait left, copy right, continuous soft transition. */
+#lavora.editorial-section{grid-template-columns:minmax(0,52%) minmax(0,48%)}
+#lavora .editorial-copy{grid-area:1/2/2/3;padding-left:8%;padding-right:10%}
+#lavora .editorial-image{grid-area:auto;inset:0 auto 0 0;width:52%}
+#lavora .editorial-image img{object-position:48% 42%!important}
+#lavora .editorial-image::after{background:linear-gradient(to right,transparent 68%,rgba(242,244,246,.2) 78%,rgba(242,244,246,.55) 88%,rgba(242,244,246,.92) 96%,#f2f4f6 100%)}
+@media(max-width:760px){#lavora.editorial-section{grid-template-columns:minmax(0,52%) minmax(0,48%);min-height:265px}#lavora .editorial-copy{padding:24px 8%}#lavora .editorial-image{width:52%}}
