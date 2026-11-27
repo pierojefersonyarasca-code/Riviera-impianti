@@ -297,3 +297,9 @@ html:has(.engineering-menu[open]){overflow:hidden}
 .engineering-menu-footer{margin:auto 6% 0;padding-top:18px;border-top:0;font-size:9px;letter-spacing:.13em}
 }
 @media(pointer:coarse){.engineering-menu .engineering-close:focus:not(:focus-visible){outline:none}}
+
+/* Keep the menu wordmark clean when the modal receives initial focus. */
+.engineering-menu .overlay-logo{border:0;box-shadow:none;background:transparent}
+.engineering-menu .overlay-logo:focus,.engineering-menu .overlay-logo:focus-visible{outline:none;text-decoration:none}
+@media(hover:hover) and (pointer:fine){.engineering-menu .overlay-logo:focus-visible{outline:2px solid white;outline-offset:5px}}
+@media(pointer:coarse){.engineering-menu .engineering-close:focus-visible{outline:none}}
