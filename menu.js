@@ -1,7 +1,7 @@
 'use strict';
 (()=>{
 const trigger=document.querySelector('header .menu'),panel=document.getElementById('mobileNav'),close=panel.querySelector('.engineering-close');
-function openMenu(){if(panel.open)return;panel.showModal();trigger.setAttribute('aria-expanded','true');document.body.classList.add('nav-open');close.focus({preventScroll:true});}
+function openMenu(){if(panel.open)return;panel.showModal();trigger.setAttribute('aria-expanded','true');document.body.classList.add('nav-open');}
 function closeMenu(){if(panel.open)panel.close();}
 trigger.addEventListener('click',openMenu);
 close.addEventListener('click',closeMenu);
