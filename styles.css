@@ -394,3 +394,18 @@ html:has(.engineering-menu[open]){overflow:hidden}
 #lavora .editorial-image{inset:0 0 0 auto;grid-column:2;grid-row:1}
 #lavora .editorial-image::after{background:linear-gradient(to right,#f2f4f6 0%,rgba(242,244,246,.88) 14%,rgba(242,244,246,.28) 25%,transparent 36%)}
 @media(max-width:760px){#lavora.editorial-section{grid-template-columns:minmax(0,51%) minmax(0,49%)}#lavora .editorial-copy{padding-left:9%;padding-right:5px}#lavora .editorial-image::after{background:linear-gradient(to right,#f2f4f6 0%,rgba(242,244,246,.9) 11%,rgba(242,244,246,.2) 22%,transparent 32%)}}
+
+/* Careers final framing: image spans the section, not a percentage of its grid column. */
+#lavora.editorial-section{grid-template-columns:minmax(0,48%) minmax(0,52%);min-height:clamp(265px,35vw,480px)}
+#lavora .editorial-copy{grid-area:1/1/2/2;min-width:0;padding-left:10%;padding-right:8%;align-self:center}
+#lavora .editorial-image{grid-area:auto;position:absolute;inset:0 0 0 auto;width:52%;height:100%;margin:0;overflow:hidden;clip-path:none;background:#172434}
+#lavora .editorial-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%!important}
+#lavora .editorial-image::after{background:linear-gradient(to right,#f2f4f6 0%,rgba(242,244,246,.45) 5%,transparent 12%)}
+@media(max-width:760px){
+#lavora.editorial-section{grid-template-columns:minmax(0,48%) minmax(0,52%);min-height:265px}
+#lavora .editorial-copy{padding:26px 6% 26px 10%}
+#lavora .editorial-image{grid-area:auto;width:52%;height:100%}
+#lavora .editorial-image img{width:100%;height:100%;object-position:50% 40%!important}
+#lavora .editorial-copy h2{font-size:clamp(19px,5.2vw,37px);white-space:normal}
+#lavora .editorial-image::after{background:linear-gradient(to right,#f2f4f6 0%,rgba(242,244,246,.45) 5%,transparent 12%)}
+}
