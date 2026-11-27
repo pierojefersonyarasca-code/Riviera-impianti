@@ -155,3 +155,6 @@ header{top:8px;margin:8px 3%;width:94%;height:66px;padding:0 15px}
   .hero { background-position: 0 0; }
   .art { transform: none; }
 }
+
+/* Updated company wordmark */
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;white-space:nowrap;line-height:1}.logo-main{display:block;font-weight:900;letter-spacing:-.055em;font-size:clamp(25px,2.4vw,34px)}.logo small{font-size:clamp(8px,.8vw,11px);letter-spacing:.17em;font-weight:700;margin-top:5px;line-height:1.1}@media(max-width:760px){.logo-main{font-size:27px}.logo small{font-size:9px;letter-spacing:.13em}}
