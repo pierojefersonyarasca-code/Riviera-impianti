@@ -214,6 +214,7 @@ header>.cta{background:transparent;border:1px solid #ffffff80;border-radius:0}
 }
 @media(max-width:760px) and (min-aspect-ratio:3/4){.hero{min-height:720px;aspect-ratio:3/4}.hero .art-layer{background-position:center top}}
 
-/* Approved headline option 01: bold modern grotesk, all other hero elements unchanged. */
-.hero h1{font-family:Inter,Arial,Helvetica,sans-serif;font-weight:900;letter-spacing:-.055em;line-height:.98}
-@media(max-width:760px){.hero h1{font-size:clamp(30px,10.1vw,68px);font-weight:900;letter-spacing:-.055em;line-height:1.03}}
+
+/* Headline: broader bold grotesk, matching the selected visual proportions. */
+.hero h1{font-family:Archivo,Arial,Helvetica,sans-serif;font-weight:900;font-size:clamp(42px,7.8vw,130px);letter-spacing:-.048em;line-height:.96;font-synthesis:none}
+@media(max-width:760px){.hero h1{font-size:clamp(30px,10.8vw,72px);letter-spacing:-.045em;line-height:1.02;margin:22px 0 16px}.hero h1 span{transform:scaleX(1.12);transform-origin:left center;width:max-content;max-width:89%}}
