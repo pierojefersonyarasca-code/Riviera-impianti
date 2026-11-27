@@ -372,3 +372,7 @@ html:has(.engineering-menu[open]){overflow:hidden}
 #azienda .editorial-image::after{background:linear-gradient(to right,#f2f4f6 0%,rgba(242,244,246,.96) 19%,rgba(242,244,246,.6) 35%,transparent 58%)}
 #lavora .editorial-image::after{background:linear-gradient(to left,#f2f4f6 0%,rgba(242,244,246,.96) 19%,rgba(242,244,246,.6) 35%,transparent 58%)}
 }
+
+/* Careers: frame the welding arc and flange in the clear portion of the image. */
+#lavora .editorial-image img{object-position:83% center!important}
+@media(max-width:760px){#lavora .editorial-image img{object-position:86% center!important}#lavora .editorial-image::after{background:linear-gradient(to left,#f2f4f6 0%,#f2f4f6f5 20%,#f2f4f699 32%,transparent 49%)}}
