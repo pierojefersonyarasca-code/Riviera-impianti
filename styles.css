@@ -218,3 +218,16 @@ header>.cta{background:transparent;border:1px solid #ffffff80;border-radius:0}
 /* Headline: broader bold grotesk, matching the selected visual proportions. */
 .hero h1{font-family:Archivo,Arial,Helvetica,sans-serif;font-weight:900;font-size:clamp(36px,6.65vw,111px);letter-spacing:-.048em;line-height:.96;font-synthesis:none}
 @media(max-width:760px){.hero h1{font-size:clamp(26px,9.2vw,61px);letter-spacing:-.045em;line-height:1.02;margin:22px 0 16px}.hero h1 span{transform:scaleX(1.12);transform-origin:left center;width:max-content;max-width:89%}}
+
+/* Cinematic reveal: each line rises from its own clipping mask. */
+.hero h1 .title-mask{display:block;overflow:hidden;padding-bottom:.045em;margin-bottom:-.045em;transform:none;width:100%;max-width:none}
+.hero h1 .title-rise{display:block;transform:none;width:auto;max-width:none}
+@media(max-width:760px){.hero h1 .title-rise{transform:scaleX(1.12);transform-origin:left center}}
+@media(prefers-reduced-motion:no-preference){
+.hero h1 .title-rise{animation:cinematicTitleRise .85s cubic-bezier(.16,1,.3,1) both;--title-scale:1}
+.hero h1 .title-mask:nth-child(1) .title-rise{animation-delay:.12s}
+.hero h1 .title-mask:nth-child(2) .title-rise{animation-delay:.28s}
+.hero h1 .title-mask:nth-child(3) .title-rise{animation-delay:.44s}
+@media(max-width:760px){.hero h1 .title-rise{--title-scale:1.12}}
+}
+@keyframes cinematicTitleRise{from{transform:translateY(115%) scaleX(var(--title-scale,1))}to{transform:translateY(0) scaleX(var(--title-scale,1))}}
