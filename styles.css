@@ -333,14 +333,19 @@ html:has(.engineering-menu[open]){overflow:hidden}
 @media(max-width:360px){.editorial-copy h2{font-size:20px;overflow-wrap:anywhere}.editorial-copy p{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.editorial-link,.editorial-link svg{transition:none}}
 
-/* Branded photography: keep the original landscape composition, including all lettering. */
-:is(#azienda,#lavora) .editorial-image{align-self:center;min-height:0;aspect-ratio:2/1;clip-path:none;margin:24px 5%;overflow:hidden;background:#e9edf1}
-:is(#azienda,#lavora) .editorial-image img{position:relative;width:100%;height:100%;object-fit:contain;object-position:center!important}
-:is(#azienda,#lavora) .editorial-image figcaption{bottom:5px;right:5px}
+
+/* Branded photos remain beside their text, with the full picture visible. */
+:is(#azienda,#lavora) .editorial-image{align-self:center;min-height:0;aspect-ratio:auto;clip-path:none;margin:20px 4%;background:transparent;overflow:visible}
+:is(#azienda,#lavora) .editorial-image img{position:static;display:block;width:100%;height:auto;object-fit:contain;object-position:center!important}
+:is(#azienda,#lavora) .editorial-image figcaption{position:static;background:transparent;color:#52677b;padding:5px 0 0;text-align:right;font-size:9px;line-height:1.4}
 @media(max-width:760px){
-:is(#azienda,#lavora).editorial-section{grid-template-columns:minmax(0,1fr);min-height:0}
-:is(#azienda,#lavora) .editorial-copy{grid-column:1;grid-row:1;padding:30px 6% 20px}
-:is(#azienda,#lavora) .editorial-copy h2{font-size:clamp(24px,7vw,40px)}
-:is(#azienda,#lavora) .editorial-copy p{max-width:48ch}
-:is(#azienda,#lavora) .editorial-image{grid-column:1;grid-row:2;margin:0 6% 26px;aspect-ratio:2/1;min-height:0;clip-path:none}
+#azienda.editorial-section{grid-template-columns:minmax(0,51%) minmax(0,49%);min-height:0}
+#lavora.editorial-section{grid-template-columns:minmax(0,49%) minmax(0,51%);min-height:0}
+:is(#azienda,#lavora) .editorial-copy{padding-top:30px;padding-bottom:30px}
+#azienda .editorial-copy{padding-left:9%;padding-right:5px}
+#lavora .editorial-copy{padding-left:7px;padding-right:9%}
+:is(#azienda,#lavora) .editorial-copy h2{font-size:clamp(19px,5.2vw,37px);overflow-wrap:break-word}
+:is(#azienda,#lavora) .editorial-copy p{font-size:12px}
+:is(#azienda,#lavora) .editorial-image{margin:12px 4%;min-width:0}
+:is(#azienda,#lavora) .editorial-image figcaption{font-size:8px}
 }
