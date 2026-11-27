@@ -6,7 +6,7 @@
  const sections=[...document.querySelectorAll('.editorial-section:not(#lavora) .editorial-image img')];
  const clamp=n=>Math.min(1,Math.max(0,n));
  const mobile=()=>matchMedia('(max-width:760px)').matches;
- const paint=(p)=>{art.style.transformOrigin=mobile()?'60% 65%':'65% 55%';art.style.transform='scale('+(1+p*(mobile()?.2907:.3672))+')';};
+ const paint=(p)=>{art.style.transformOrigin=mobile()?'60% 65%':'65% 55%';art.style.transform='scale('+(1+p*(mobile()?.2584:.3264))+')';};
  let raf=0, cleanup=()=>{}, generation=0;
  function reset(){art.style.removeProperty('transform');art.style.removeProperty('transform-origin');sections.forEach(el=>el.style.removeProperty('transform'));}
  function native(){
